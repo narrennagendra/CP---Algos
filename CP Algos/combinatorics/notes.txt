@@ -1,0 +1,33 @@
+								COMBINATORICS
+
+1) (a+b)^n = nC0(a^n)(b^0) + nC1(a^n-1)(b^1) + nC2(a^n-2)(b^2) + ... + nCn(a^0)(b^n)
+2) (1+b)^n = nC0(b^0) + nC1(b^1) + nC2(b^2) + ... + nCn(b^n)
+3) nCk = (n!) / ((n-k)! * k!)
+3) nCk = nC(n-k)
+4) nCk = (n-1)C(k-1) + (n-1)C(k)
+
+								  SUMMATION
+
+1) the sum of nC0 + nC1 + ... + nCn = 2 ^ n
+	(∵ in binomial expansion of (a+b)^n when we substitute a = 1 and b = 1 we end up getting nC0 + nC1 + ... + nCn)
+
+2) sum of nCn + (n+1)Cn + (n+2)Cn + (n+3)Cn + (n+4)Cn + ... + (n+k)Cn = (n+k+1)Ck
+this can be written as below using property [nCk = nC(n-k)]
+nC0 + (n+1)C1 + (n+2)C2 + ... + (n+k)Ck
+	(∵ we know the identity nCk = (n-1)C(k-1) + (n-1)C(k))
+	now nCn can be written as (n+1)C0 
+	so the new series become (n+1)C0 + (n+1)C1 + (n+2)C2 + ... + (n+k)Ck
+		from the first two terms [(n+1)C0 + (n+1)C1 ] = (n+2)C1 --- eq1
+		from eq1 + third term [ (n+2)C1 + (n+2)C2 ] = (n+3)C2 --- eq2 ans so on
+		at last term we are left with (n+k)C(k-1) + (n+k)Ck = (n+k+1)Ck
+
+3) to get the sum of just the even ones ie nC0 + nC2 + nC3 + ... + nCn
+	substitute a = -1 and b = 1 and observe[see that at even powers of a you are getting something and at odd powers of b you are getting something]
+
+4) Sum(C(n,i)*C(m,k-i)) over i in [0,k] = (n+m)Ck
+-> when we write it down it boils down to like we are picking [(0 balls from N and k balls from M) + (1 balls from N and k-1 balls from M) + (2 balls from N and k-2 balls from M) + so on]
+-> it is equivalent to like picking k ball from M+N balls
+-> so the answer is (n+m)Ck
+
+5)
+------------------------------------------------------------------------------

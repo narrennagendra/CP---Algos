@@ -1,0 +1,83 @@
+1) primality test :- it is to find the whether the given number is a prime or not [O(n ^ 0.5)]
+2) sieve_of_eratosthenes :- it is to find whether the given number is prime or not when there are"n" queries given and the no. of queries is very large [O(n * log(log(n)))]
+------------------------------------------------------------------------------
+							MODULAR ARITHMETIC
+
+
+-> (a + b) % mod = ((a % mod) + (b % mod)) % mod
+-> (a - b) % mod = ((a % mod) - (b % mod)) % mod
+-> (a * b) % mod = ((a % mod) * (b % mod)) % mod
+# it is not applycable to the division (it has inverse modulo)
+
+						   CONGRUENCY OF MODULO
+
+
+1) a ≡ b (mod N) [a is congruent of b under n if they leave same remainder under N]
+ex:- 13 ≡ 41 (mod 7)
+	 13 mod 7 = 6
+	 41 mod 7 = 6
+->we can aplly this stuff like:
+	(13+35+5) % 7 = (53) % 7 = 4
+	(41+35+5) % 7 = (81) % 7 = 4 [replaced 13 with 41]
+ Proof:
+	(13+35+5) % 7 = (13 % 7 + 35 % 7 + 5 % 7) % 7 = (6 + 0 + 5) % 7 = 4
+	(41+35+5) % 7 = (41 % 7 + 35 % 7 + 5 % 7) % 7 = (6 + 0 + 5) % 7 = 4
+[NOTE: this is apply cable only for "+", "-", "*" not  "/"]
+
+
+2) if a ≡ b (mod N)
+   then:
+		a - b ≡ 0 (mod N)
+Proof:
+	a = N * q1 + r
+	b = N * q2 + r
+	(a - b) = N * (q1 -q2) [which is divisible by N]
+-> a - b = N * k then a = N * k + b [ this means that when you convers b into a by adding N * k then both a and b will give you the same answer for (mod N)]
+
+
+3)if a * b = c
+	then: a(mod N) * b(mod N) ≡ c (mod N)
+	i.e   a % N * b % N ≡ c % N
+
+
+4) if a ≡ b (mod N)
+	then: a ^ k ≡ b ^ k (mod N)
+-> we can apply this stuf like:
+	ex: 
+		16 ≡ 1 (mod 3) then 
+		16 ^ 5 ≡ 1 ^ 5 (mod 3) [notice that we reduce the time to multiply by taking the lowe number]
+
+							MODULO MULTIPLICATIVE INVERSE
+
+
+1) if N * x ≡ 1 (mod P)
+	->then x is called modulo multiplicative inverse, and x ∈ (1, p-1) or there multiples but for least they ∈ (1, p-1)
+we can use like this:
+	ex:- 2 * 3 ≡ 1 (mod 5)
+	then : 
+		first:- (6 / 2)  % 5 = (6 * 3) % 5 [MMI of 2 under (mod 5) is 3]
+							 = ((6 % 5) * (3 % 5) % 5)
+							 = (1 * 3) % 5
+							 = 3
+	-> there is no guarante of MMI to exist [ex: 12 does not have MMI under (mod 6)]
+	-> inorder for MMI to exist GCD(N, P) = 1 (ie they need to be co-primes)
+
+2) fermats little theorem:- 
+	a ^ (m-1) ≡ 1 (mod m) [divide with a on both sides] [GCD(a, m) = 1]
+	a ^ (m-2) ≡ a ^ -1 (mod m) [(a ^ m-2) % m is the modulo inverse]
+	-> use pow(a,m-2,m) function to grt MMI
+
+------------------------------------------------------------------------------
+									GCD 
+
+
+-> GCD(a, 0) = a = GCD(0, a)
+-> GCD(a, b) = GCD(a-b, b) = GCD(a, b-a)
+-> GCD(a, b) = GCD(a+b, b) = GCD(a, b+a)
+-> GCD(a, b) = GCD(a%b, b)
+------------------------------------------------------------------------------
+								COMBINATORICS
+
+1) (a+b)^n = nC0(a^n)(b^0) + nC1(a^n-1)(b^1) + nC2(a^n-2)(b^2) + ... + nCn(a^0)(b^n)
+2) (1+b)^n = nC0(b^0) + nC1(b^1) + nC2(b^2) + ... + nCn(b^n)
+3) nCk = (n!) / ((n-k)! * k!)
